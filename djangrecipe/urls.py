@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from vegge import views
+from vegge.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('recipes/', views.recipes, name='recipes'),
 ]
