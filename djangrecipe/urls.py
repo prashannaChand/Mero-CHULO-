@@ -20,5 +20,5 @@ from vegge import views
 from vegge.views import *
 
 urlpatterns = [
-    path('recipes',recipes, name='recipes'),
+    path('',recipes, name='recipes'),
 ]
