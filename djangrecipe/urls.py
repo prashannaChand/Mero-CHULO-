@@ -20,6 +20,5 @@ from vegge import views
 from vegge.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('recipes/', views.recipes, name='recipes'),
+    path('recipes',recipes, name='recipes'),
 ]
