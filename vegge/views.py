@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
+
 
 # Create your views here.
 def recipes(request):
@@ -14,5 +15,5 @@ def recipes(request):
             description=data.get('description'),
             image=image
         )
-        # You can add logic to save the data here
+        return redirect('recipes')
     return render(request, 'recipes.html')
