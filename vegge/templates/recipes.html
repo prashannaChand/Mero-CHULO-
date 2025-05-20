@@ -28,21 +28,23 @@
         
         <title>RECIPE</title>
 <div class="container">
-    <form>
+    <form method="POST" enctype="multipart/form-data"> 
+          {% csrf_token %}
+             <h2>Add your recipe</h2>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Recipe name</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input name ="name" type="text" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We'll never share your Recipe with anyone else.</div>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Recipe description</label>
-    <textarea class="form-control">
+    <textarea name ="description" class="form-control">
     </textarea>
     <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Recipe image</label>
-    <input type="file" class="form-control" id="exampleInputPassword1">
+    <input name="image" type="file" class="form-control" id="exampleInputPassword1">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-success">Add Recipe</button>
 
 </form>
 <div/>
