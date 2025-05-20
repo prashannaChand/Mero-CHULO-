@@ -47,5 +47,43 @@
   <button type="submit" class="btn btn-success">Add Recipe</button>
 
 </form>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">description</th>
+      <th scope="col">image</th>
+      <th scope="col">action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for recipe in recipes %}
+    <tr>
+      <th scope="row">{{ recipe.id }}</th>
+      <td>{{ recipe.name }}</td>
+      <td>{{ recipe.description }}</td>
+      <td>
+        {% if recipe.image %}
+          <img src="{{ recipe.image.url }}" alt="Recipe Image" style="width: 100px; height: auto;">
+        {% else %}
+          No image
+        {% endif %}
+      </td>
+      <td>
+        <form method="POST" ac>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger" >Delete</button>
+        </form>
+        <form method="POST" >
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">Edit</button>
+
+    </tr>
+      {% endfor %}  
+  </tbody>
+</table>
+
 <div/>
  </html>
