@@ -9,19 +9,22 @@
         <h2>Edit your recipe</h2>
         <div class="mb-3">
             <label for="name" class="form-label" default="id.name" >Recipe name</label>
-            <input name="name" type="text" required class="form-control" id="name">
-            <div id="emailHelp" class="form-text">We'll never share your Recipe with anyone else.</div>
+            <input name="name" value="{{recipe.name}}"type="text" required class="form-control" id="name">
+            <div id="recipeHelp" class="form-text">We'll try to help you make your recipe better .</div>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Recipe description</label>
-            <textarea name="description" class="form-control"></textarea>
+            <textarea name="description" class="form-control">{{recipe.description}}</textarea>
         </div>
         <div class="mb-3">
             <label for="recipeimage" class="form-label">Recipe image</label>
+            {% if recipe.image %}
+                <img src="{{ recipe.image.url }}" alt="Recipe Image" style="width: 100px; height: auto;">
+            {% else %}
+                No image
+            {% endif %}
             <input name="image" type="file" class="form-control" id="recipeimage" accept="image/*">
-        </div>
         <button type="submit" class="btn btn-success">Add Recipe</button>
     </form>
-
 </body>
 {% endblock %}

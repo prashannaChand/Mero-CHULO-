@@ -75,7 +75,11 @@
               {% csrf_token %}
               <button type="submit" class="btn btn-danger">Delete</button>
             </form>
-            <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-primary">Edit</a>
+            <form method="POST" action="{% url 'edit_recipe' recipe.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success">Edit</button>
+            </form>
+            
           </td>
         </tr>
         {% endfor %}  

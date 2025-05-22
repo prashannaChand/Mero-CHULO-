@@ -44,10 +44,10 @@ def edit_recipe(request, id):
         if name:
             recipe.name = name
             recipe.description = description
-            recipe.image = image
+            if image:
+                recipe.image = image
             recipe.save()
             return redirect('recipes')
-    context = {
-        'recipe': recipe
-    }
-    return render(request, 'edit_recipe.html', context)
+        else:
+            print("Name is missing!")
+    return render(request, 'edit_recipe.html', {'recipe': recipe})
