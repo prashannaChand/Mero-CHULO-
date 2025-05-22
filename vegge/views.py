@@ -33,3 +33,21 @@ def delete_recipe(request, id):
     recipe = Recipe.objects.get(id=id)
     recipe.delete()
     return redirect('recipes')
+
+def edit_recipe(request, id):
+    recipe = Recipe.objects.get(id=id)
+    if request.method == 'POST':
+        data = request.POST
+        name = data.get('name')
+        description = data.get('description')
+        image = request.FILES.get('image')
+        if name:
+            recipe.name = name
+            recipe.description = description
+            recipe.image = image
+            recipe.save()
+            return redirect('recipes')
+    context = {
+        'recipe': recipe
+    }
+    return render(request, 'edit_recipe.html', context)
