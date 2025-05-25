@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import *
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 # Create your views here.
@@ -51,3 +53,33 @@ def edit_recipe(request, id):
         else:
             print("Name is missing!")
     return render(request, 'edit_recipe.html', {'recipe': recipe})
+
+def login_page(request):
+    
+    return render(request, 'login.html')    
+
+def register(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user=User.objects.filter(username=username)
+        if user:
+            # If user already exists, show a message and redirect
+            messages.error(request, "Username already exists!") 
+            print("Username already exists!")
+            return redirect('register')
+
+
+        user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name)
+        user.set_password(password)
+        user.save()
+        messages.success(request, "User registered successfully!")
+        print("User registered successfully!")  
+        return redirect('register')
+    
+
+    return render(request, 'register.html') 
+    
