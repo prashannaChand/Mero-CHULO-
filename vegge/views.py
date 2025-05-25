@@ -24,9 +24,9 @@ def recipes(request):
         # Otherwise, ignore POST (it's from Delete/Edit)
         return redirect('recipes')
     queryset = Recipe.objects.all()
-    context = {
-        'recipes': queryset
-    }
+    if request.GET.get('search'):
+       queryset = queryset.filter(name__icontains=request.GET.get('search'))
+    context = {'recipes': queryset}
     return render(request, 'recipes.html', context)
 
 def delete_recipe(request, id):
