@@ -2,6 +2,12 @@ from django.shortcuts import render,redirect
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate,login
+from django.http import HttpResponse
+#sleep is used to add a delay for better UX
+from time import sleep
+
 
 
 # Create your views here.
@@ -55,8 +61,22 @@ def edit_recipe(request, id):
     return render(request, 'edit_recipe.html', {'recipe': recipe})
 
 def login_page(request):
-    
-    return render(request, 'login.html')    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is None:
+            messages.error(request, "Invalid username or password!")
+            return redirect('login_page')
+        else:
+            login(request, user)
+            messages.success(request, "Login successful!")
+            sleep(1)  # Adding a delay for better UX
+            return redirect('recipes')
+        
+    return render(request, 'login.html')
+        
 
 def register(request):
     if request.method == 'POST':
@@ -81,5 +101,4 @@ def register(request):
         return redirect('register')
     
 
-    return render(request, 'register.html') 
-    
+    return render(request, 'register.html')
