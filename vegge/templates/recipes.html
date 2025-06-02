@@ -27,6 +27,8 @@
     <title> MAIN RECIPE</title>
 </head>
 <body>
+  <button class="btn btn-primary" style="margin: 20px;" onclick="window.location.href='{% url 'logout' %}'">Logout</button>
+  <button class="btn btn-primary" style="margin: 20px;" onclick="window.location.href='{% url 'home' %}'">Home</button>
   {% if messages %}
     <div class="container">
         {% for message in messages %}

@@ -29,6 +29,7 @@ urlpatterns = [
     path('login/', login_page, name='login_page'),
     path("register/",register, name="register"),
     path('logout/', logout_page, name='logout_page'),
+    path('logout_page/', logout_page, name='logout_page'),  # Added this line
 ]
 
 if settings.DEBUG:

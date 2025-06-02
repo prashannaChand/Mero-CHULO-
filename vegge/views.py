@@ -3,7 +3,7 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse
 #sleep is used to add a delay for better UX
 from time import sleep
@@ -102,3 +102,12 @@ def register(request):
     
 
     return render(request, 'register.html')
+
+def logout_page(request):
+    if request.user.is_authenticated:
+        logout(request,User)
+        messages.success(request, "Logged out successfully!")
+        return redirect('login_page')
+    else:
+        messages.error(request, "You are not logged in!")
+        return redirect('login_page')
