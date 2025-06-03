@@ -52,6 +52,17 @@
       margin: 20px 0;
     }
 
+    /* --- Updated recipe-card styles --- */
+    .recipe-card img {
+      width: 100%;
+      height: auto;
+      max-height: 300px; /* Adjust as needed */
+      object-fit: contain;
+      border-radius: 12px;
+      background-color: #fffefc;
+      padding: 8px;
+    }
+
     .recipe-card {
       background: #fff7f0;
       border: none;
@@ -59,13 +70,11 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       padding: 20px;
       margin-bottom: 20px;
+      transition: transform 0.2s ease;
     }
 
-    .recipe-card img {
-      max-height: 160px;
-      border-radius: 12px;
-      object-fit: cover;
-      width: 100%;
+    .recipe-card:hover {
+      transform: scale(1.01);
     }
 
     .search-box {
