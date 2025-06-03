@@ -34,10 +34,16 @@
       Welcome, Guest!
     {% endif %}
   </h2>
-      {%if request.user.is_authenticated%}<button class="btn btn-primary" style="margin: 20px;" onclick="window.location.href='{% url 'logout_page' %}'">Logout</button>
-      {%else%}<button class="btn btn-primary" style="margin: 20px;" onclick="window.location.href='{% url 'login_page' %}'">Login</button>
-      {% endif %}
-  <button class="btn btn-primary" style="margin: 20px;" onclick="window.location.href='{% url 'recipes' %}'">Home</button>
+  <div class="d-flex justify-content-center align-items-center mb-4" style="gap: 10px;">
+    {% if request.user.is_authenticated %}
+      <button class="btn btn-primary" onclick="window.location.href='{% url 'logout_page' %}'">Logout</button>
+    {% else %}
+      <button class="btn btn-primary" onclick="window.location.href='{% url 'login_page' %}'">Login</button>
+    {% endif %}
+    <button class="btn btn-primary" onclick="window.location.href='{% url 'recipes' %}'">Home</button>
+    <button class="btn btn-primary" onclick="window.location.href='{% url 'add_recipe' %}'">Add Recipe</button>
+  </div>
+
   {% if messages %}
     <div class="container">
         {% for message in messages %}
@@ -48,26 +54,6 @@
     </div>
   {% endif %}
 
-<div class="container">
-    <form method="POST" enctype="multipart/form-data"> 
-        {% csrf_token %}
-        <h2>Add your recipe</h2>
-        <div class="mb-3">
-            <label for="name" class="form-label">Recipe name</label>
-            <input name="name" type="text" required class="form-control" id="name">
-            <div id="emailHelp" class="form-text">We'll never share your Recipe with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">Recipe description</label>
-            <textarea name="description" class="form-control"></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="recipeimage" class="form-label">Recipe image</label>
-            <input name="image" type="file" class="form-control" id="recipeimage" accept="image/*">
-        </div>
-        <button type="submit" class="btn btn-success">Add Recipe</button>
-    </form>
-    <br>
 
 <div class="mb-3">
   <form>
