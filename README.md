@@ -1,6 +1,6 @@
-# 🍽️ KhanaGhar — Your Personal Recipe Haven
+# 🍽️ Mero चुलो ! — Your Personal Recipe Haven
 
-**KhanaGhar** is a beautiful, modern, and intuitive **Django-powered recipe web application** where users can add, edit, and view delicious recipes in a warm and user-friendly interface.
+**Mero चुलो !** is a beautiful, modern, and intuitive **Django-powered recipe web application** where users can add, edit, and view delicious recipes in a warm and user-friendly interface.
 
 > 🐍 Built with Python & Django — designed for aspiring chefs and food lovers.
 
