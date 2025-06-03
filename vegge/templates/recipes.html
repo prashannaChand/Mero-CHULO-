@@ -27,7 +27,17 @@
     <title> MAIN RECIPE</title>
 </head>
 <body>
-  <button class="btn btn-primary" style="margin: 20px;" onclick="window.location.href='{% url 'logout_page' %}'">Logout</button>
+  <h2>
+    {% if request.user.is_authenticated %}
+      Welcome, {{ request.user.username }}!
+    {% else %}
+      Welcome, Guest!
+    {% endif %}
+  </h2>
+      {%if request.user.is_authenticated%}<button class="btn btn-primary" style="margin: 20px;" onclick="window.location.href='{% url 'logout_page' %}'">Logout</button>
+      {%else%}<button class="btn btn-primary" style="margin: 20px;" onclick="window.location.href='{% url 'login_page' %}'">Login</button>
+      {% endif %}
+  <button class="btn btn-primary" style="margin: 20px;" onclick="window.location.href='{% url 'recipes' %}'">Home</button>
   {% if messages %}
     <div class="container">
         {% for message in messages %}
